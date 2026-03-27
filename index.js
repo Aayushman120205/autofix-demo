@@ -1,5 +1,5 @@
 function add(a, b) {
-  return a - b; // ❌ bug: subtraction instead of addition
+  return a + b; // ✅ fix: changed subtraction to addition
 }
 
 function multiply(a, b) {
@@ -13,7 +13,7 @@ function divide(a, b) {
 
 function greet(name) {
   if (!name) throw new Error("Name is required");
-  return `Hello, ${name}!`; // <-- FIXED (comma added)
+  return `Hello, ${name}!`;
 }
 
 module.exports = { add, multiply, divide, greet };
