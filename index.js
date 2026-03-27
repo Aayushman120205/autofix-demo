@@ -1,7 +1,3 @@
-// ✅ This is the CORRECT version of the app
-// The bot will restore this when it breaks
-//great
-//NowWorking
 function add(a, b) {
   return a + b;
 }
@@ -11,8 +7,7 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  if (b === 0) throw new Error("Cannot divide by zero");
-  return a / b;
+  return a / b; // ❌ bug: removed zero check
 }
 
 function greet(name) {
