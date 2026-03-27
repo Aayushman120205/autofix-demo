@@ -1,6 +1,7 @@
 // ✅ This is the CORRECT version of the app
 // The bot will restore this when it breaks
 //great
+//NowWorking
 function add(a, b) {
   return a + b;
 }
