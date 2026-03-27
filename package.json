@@ -1,0 +1,13 @@
+{
+  "name": "autofix-demo",
+  "version": "1.0.0",
+  "description": "Demo repo to showcase AutoFix Bot — intentionally breaks so the bot can fix it",
+  "scripts": {
+    "test": "jest",
+    "break": "node scripts/break.js",
+    "restore": "node scripts/restore.js"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
