@@ -1,5 +1,6 @@
 # Watches CI failures and pings AutoFix Bot automatically
 #Great
+#Retry
 name: AutoFix Trigger
 
 on:
