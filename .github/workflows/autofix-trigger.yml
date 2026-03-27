@@ -1,0 +1,26 @@
+# Watches CI failures and pings AutoFix Bot automatically
+name: AutoFix Trigger
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+
+jobs:
+  notify-autofix:
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping AutoFix Bot
+        run: |
+          PAYLOAD='${{ toJson(github.event) }}'
+          SIGNATURE=$(echo -n "$PAYLOAD" | openssl dgst -sha256 -hmac "${{ secrets.AUTOFIX_WEBHOOK_SECRET }}" | sed 's/^.* /sha256=/')
+
+          curl -s -X POST "${{ secrets.AUTOFIX_WEBHOOK_URL }}/webhook" \
+            -H "Content-Type: application/json" \
+            -H "X-GitHub-Event: workflow_run" \
+            -H "X-Hub-Signature-256: $SIGNATURE" \
+            -d "$PAYLOAD"
+
+          echo "✅ AutoFix Bot notified"
