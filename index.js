@@ -7,13 +7,12 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-  if (b === 0) throw new Error("Cannot divide by zero");
-  return a / b;
+  return a / b; // ❌ bug: removed zero check
 }
 
 function greet(name) {
   if (!name) throw new Error("Name is required");
-  return `Hello, ${name}!`; // <-- FIXED (comma added)
+  return `Hello, ${name}!`;
 }
 
 module.exports = { add, multiply, divide, greet };
